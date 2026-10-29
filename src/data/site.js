@@ -63,8 +63,8 @@ export const site = {
   //   link: 'https://...',   (turns the title into a link, for example to a certificate)
   // An empty list, like certifications: [], shows "To be added".
   resume: {
-    url: '/resume.pdf',
-    fileName: 'Khyrk-Shan-Gula-Resume.pdf',
+        url: '/Khyrk%20Shan%20Gula%20-%20Resume.pdf',
+        fileName: 'Khyrk Shan Gula - Resume.pdf',
 
     education: [
       {
