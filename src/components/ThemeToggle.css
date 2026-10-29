@@ -1,0 +1,55 @@
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.theme-option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.18s ease;
+  user-select: none;
+}
+
+.theme-option:hover {
+  color: var(--text);
+}
+
+.theme-option[data-active] {
+  color: var(--pill-text);
+}
+
+.theme-option > .icon,
+.theme-option > .theme-label {
+  position: relative;
+  z-index: 1;
+}
+
+.theme-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--pill-bg);
+  box-shadow: var(--pill-shadow);
+}
+
+/* The radio inputs are visually hidden, so the focus ring goes on the label. */
+.theme-option:has(:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}

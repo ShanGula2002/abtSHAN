@@ -1,0 +1,348 @@
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.work-grid > li {
+  display: flex;
+}
+
+.work-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  box-shadow: inset 0 0 0 1px var(--line-strong), inset 0 1px 0 var(--gloss), var(--card-shadow);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+  box-shadow: inset 0 0 0 1px var(--card-hover-line), inset 0 1px 0 var(--gloss), var(--card-shadow), 0 0 50px -14px var(--card-glow);
+}
+
+/* ---------- the collage ---------- */
+
+.work-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--media-bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.work-media-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, #000, transparent);
+  mask-image: radial-gradient(70% 70% at 50% 50%, #000, transparent);
+}
+
+.work-thumb {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.14);
+  transition: transform 0.7s var(--ease-expo);
+}
+
+.work-thumb-0 {
+  z-index: 3;
+}
+
+.work-thumb-1 {
+  z-index: 2;
+}
+
+.work-thumb-2 {
+  z-index: 1;
+}
+
+/* Web: browser windows stacked like a deck. */
+.work-card--web .work-thumb {
+  width: 66%;
+  height: auto;
+}
+
+.work-card--web .work-thumb-0 {
+  top: 26%;
+}
+
+.work-card--web .work-thumb-1 {
+  top: 12%;
+  transform: translateX(22%) rotate(5deg);
+}
+
+.work-card--web .work-thumb-2 {
+  top: 10%;
+  transform: translateX(-22%) rotate(-5deg);
+}
+
+.work-card--web:hover .work-thumb-0 {
+  transform: translateY(-4%) scale(1.03);
+}
+
+.work-card--web:hover .work-thumb-1 {
+  transform: translateX(30%) translateY(-4%) rotate(8deg);
+}
+
+.work-card--web:hover .work-thumb-2 {
+  transform: translateX(-30%) translateY(-4%) rotate(-8deg);
+}
+
+/* Design: posters fanned out on a table. */
+.work-card--design .work-thumb {
+  width: auto;
+  top: 12%;
+  height: 76%;
+}
+
+.work-card--design .work-thumb-1 {
+  top: 17%;
+  height: 64%;
+  transform: translateX(62%) rotate(8deg);
+}
+
+.work-card--design .work-thumb-2 {
+  top: 17%;
+  height: 64%;
+  transform: translateX(-62%) rotate(-8deg);
+}
+
+.work-card--design:hover .work-thumb-0 {
+  transform: translateY(-3%) scale(1.04);
+}
+
+.work-card--design:hover .work-thumb-1 {
+  transform: translateX(78%) rotate(12deg);
+}
+
+.work-card--design:hover .work-thumb-2 {
+  transform: translateX(-78%) rotate(-12deg);
+}
+
+/* Video: three phones side by side. */
+.work-card--video .work-thumb {
+  width: auto;
+  top: 7%;
+  height: 86%;
+  border-radius: 14px;
+}
+
+.work-card--video .work-thumb-1 {
+  top: 14%;
+  height: 72%;
+  transform: translateX(72%) rotate(6deg);
+}
+
+.work-card--video .work-thumb-2 {
+  top: 14%;
+  height: 72%;
+  transform: translateX(-72%) rotate(-6deg);
+}
+
+.work-card--video:hover .work-thumb-0 {
+  transform: scale(1.04);
+}
+
+.work-card--video:hover .work-thumb-1 {
+  transform: translateX(84%) rotate(9deg);
+}
+
+.work-card--video:hover .work-thumb-2 {
+  transform: translateX(-84%) rotate(-9deg);
+}
+
+.work-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  color: #05070d;
+  background: linear-gradient(180deg, #ffffff, #cdd6e3);
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+  transition: scale 0.3s var(--ease-out);
+}
+
+.work-play .icon {
+  margin-left: 3px;
+}
+
+.work-card:hover .work-play {
+  scale: 1.1;
+}
+
+.work-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.22) 50%, transparent 65%);
+  transform: translateX(-100%);
+  transition: transform 1s var(--ease-expo);
+  pointer-events: none;
+}
+
+.work-card:hover .work-sheen {
+  transform: translateX(100%);
+}
+
+/* ---------- text ---------- */
+
+.work-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.work-count {
+  color: var(--mint-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.work-title {
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+}
+
+.work-desc {
+  color: var(--text-soft);
+}
+
+.work-body .tags {
+  margin-bottom: 0.5rem;
+}
+
+.work-link {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* The link covers the whole card, so the card is one big target. */
+.work-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+
+.work-card:hover .work-link {
+  background: var(--surface-strong);
+}
+
+.work-link .icon {
+  transition: transform 0.25s var(--ease-out);
+}
+
+.work-card:hover .work-link .icon {
+  transform: translateX(4px);
+}
+
+/* ---------- marquee band ---------- */
+
+.marquee {
+  overflow: hidden;
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+  border-block: 1px solid var(--line);
+  background: var(--marquee-bg);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding-right: clamp(1rem, 2vw, 2rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.4vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: var(--chrome-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.marquee-item .sparkle {
+  flex: none;
+  color: var(--mint);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee:hover .marquee-track,
+.marquee[data-paused] .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ---------- smaller screens ---------- */
+
+@media (max-width: 1023px) {
+  .work-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  }
+
+  .work-media {
+    aspect-ratio: auto;
+    min-height: 100%;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 640px) {
+  .work-card {
+    display: flex;
+  }
+
+  .work-media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

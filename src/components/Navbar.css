@@ -1,0 +1,246 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  padding-top: env(safe-area-inset-top, 0px);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Glass appears once the page moves under the bar. */
+.nav[data-solid] {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: inset 0 -1px 0 var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: var(--nav-h);
+  width: min(100%, var(--max));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.nav-links ul {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.nav-link:hover,
+.nav-link[aria-current] {
+  color: var(--text);
+}
+
+.nav-link-text {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--surface-strong);
+  box-shadow: inset 0 0 0 1px var(--line-strong), inset 0 1px 0 var(--gloss);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* The round badge the hero photo flies into. */
+.nav-logo {
+  display: inline-flex;
+  border-radius: 50%;
+}
+
+.logo-badge {
+  position: relative;
+  display: block;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  border-radius: 50%;
+  background: var(--badge-bg);
+  box-shadow: var(--badge-shadow);
+  overflow: hidden;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.logo-badge::before {
+  content: '';
+  position: absolute;
+  inset: 3% 16% 52%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* While the photo is still travelling, the empty badge waits with a faint ring. */
+.logo-badge::after {
+  content: '';
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(108, 242, 156, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-badge[data-state='waiting']::after {
+  opacity: 1;
+}
+
+.nav-logo:hover .logo-badge {
+  transform: scale(1.06) rotate(-4deg);
+}
+
+.logo-art {
+  position: absolute;
+  inset: 12%;
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(108, 242, 156, 0.35));
+}
+
+.nav-menu-btn {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.burger {
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+
+.burger > span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.25s var(--ease-out), top 0.25s var(--ease-out);
+}
+
+.burger > span:first-child {
+  top: 1px;
+}
+
+.burger > span:last-child {
+  top: 9px;
+}
+
+.burger[data-open] > span:first-child {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.burger[data-open] > span:last-child {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 8px);
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 60;
+  padding: 10px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-strong);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  box-shadow: inset 0 0 0 1px var(--line-strong), 0 24px 60px rgba(0, 0, 0, 0.35);
+  transform-origin: top left;
+}
+
+.mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mobile-link:hover,
+.mobile-link[aria-current] {
+  background: var(--surface-strong);
+}
+
+.mobile-link[aria-current] .icon {
+  color: var(--mint-ink);
+}
+
+.mobile-menu-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 14px 8px 6px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 1060px) {
+  .nav-theme .theme-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 899px) {
+  .nav-links,
+  .nav-theme,
+  .nav-email {
+    display: none;
+  }
+
+  .nav-menu-btn {
+    display: inline-flex;
+  }
+}

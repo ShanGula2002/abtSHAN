@@ -1,0 +1,281 @@
+/* ---------- campaign: ad variations side by side ---------- */
+
+.campaign {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.campaign-card {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
+.campaign-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line-strong);
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.campaign-num {
+  color: var(--mint-ink);
+}
+
+.design-desc {
+  color: var(--text-soft);
+  font-size: 0.9375rem;
+}
+
+/* ---------- listing: a product page's image viewer ---------- */
+
+.listing {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line), inset 0 1px 0 var(--gloss);
+}
+
+.listing-rail {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.listing-tab {
+  display: grid;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.listing-tab:hover,
+.listing-tab[aria-selected='true'] {
+  color: var(--text);
+}
+
+.listing-tab-img {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--media-bg);
+  box-shadow: 0 0 0 1px var(--line-strong);
+  transition: box-shadow 0.2s ease;
+}
+
+.listing-tab[aria-selected='true'] .listing-tab-img {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+.listing-tab-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.listing-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 32rem) minmax(15rem, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.listing-stage {
+  display: grid;
+  aspect-ratio: 1;
+}
+
+.listing-stage img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The large image always shows that it can be opened. */
+.listing-stage .design-zoom {
+  opacity: 1;
+  scale: 1;
+}
+
+.listing-info {
+  display: grid;
+  gap: 0.75rem;
+  padding-right: clamp(0rem, 2vw, 1.5rem);
+}
+
+.listing-count {
+  color: var(--mint-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.listing-title {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+}
+
+.listing-desc {
+  color: var(--text-soft);
+}
+
+/* ---------- feed: posts as they appear in a feed ---------- */
+
+.feed {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.post {
+  display: grid;
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line), inset 0 1px 0 var(--gloss);
+  overflow: hidden;
+}
+
+.post-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+}
+
+/* A glossy orb inside a gradient ring, like a profile picture. */
+.post-avatar {
+  position: relative;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: conic-gradient(from 210deg, var(--mint), var(--electric), var(--ice), var(--mint));
+}
+
+.post-avatar::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--ice) 18%, var(--electric) 62%, #0b1430);
+  box-shadow: 0 0 0 2px var(--bg);
+}
+
+.post-who {
+  display: grid;
+  line-height: 1.25;
+}
+
+.post-type {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.post-format {
+  color: var(--text-soft);
+  font-size: 0.8125rem;
+}
+
+.post-media {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.post-actions {
+  display: flex;
+  gap: 16px;
+  padding: 12px 14px 2px;
+  color: var(--text);
+}
+
+.post-save {
+  margin-left: auto;
+}
+
+.post-caption {
+  display: grid;
+  gap: 4px;
+  padding: 8px 14px 18px;
+}
+
+.post-title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+
+.post-desc {
+  color: var(--text-soft);
+  font-size: 0.9375rem;
+}
+
+/* ---------- smaller screens ---------- */
+
+@media (max-width: 899px) {
+  /* Ad variations become a swipeable row that runs to the screen edges. */
+  .campaign {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78%, 22rem);
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0 var(--gutter) 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+  }
+
+  .campaign-card {
+    scroll-snap-align: start;
+  }
+
+  /* Listing thumbnails move above the large image, in a row. */
+  .listing {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .listing-rail {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(4.25rem, 1fr);
+    overflow-x: auto;
+    padding: 4px;
+  }
+
+  .listing-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .listing-info {
+    padding: 0 0.25rem 0.5rem;
+  }
+
+  /* One post at a time, like a phone feed. */
+  .feed {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 27rem;
+    margin-inline: auto;
+  }
+}

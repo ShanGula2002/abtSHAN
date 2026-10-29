@@ -1,0 +1,639 @@
+/* ---------- layout ---------- */
+
+.hero {
+  /* The full name is about 12 em wide in Unbounded, so this fills the container on one line. */
+  --name-size: clamp(2rem, calc((min(100vw, var(--max)) - 2 * var(--gutter)) / 12.4), 8rem);
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  overflow: clip;
+}
+
+.hero-inner {
+  position: relative;
+  width: min(100%, var(--max));
+  min-height: calc(100svh - var(--nav-h));
+  margin-inline: auto;
+  padding: clamp(0.75rem, 2.5vh, 2rem) var(--gutter) clamp(1rem, 3vh, 2rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-rows: 1fr auto auto;
+  grid-template-areas:
+    'copy stage panels'
+    'name name name'
+    'cue cue cue';
+  column-gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  align-items: center;
+}
+
+.hero-copy {
+  grid-area: copy;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 1.4rem;
+  max-width: 30rem;
+}
+
+.hero-lede {
+  color: var(--text-soft);
+  font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
+  line-height: 1.65;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- the name ---------- */
+
+.hero-name {
+  grid-area: name;
+  position: relative;
+  z-index: 1;
+  margin: calc(var(--name-size) * -0.34) 0 0;
+  font-size: var(--name-size);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.hero-name-art {
+  display: inline-flex;
+  justify-content: center;
+  gap: 0 0.26em;
+  filter: drop-shadow(0 14px 30px var(--name-shadow));
+}
+
+.hero-word {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.char-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.08em 0.01em 0.06em;
+  margin: -0.08em -0.01em -0.06em;
+}
+
+.char {
+  display: inline-block;
+  background: var(--chrome-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- the photo stage ---------- */
+
+.hero-stage {
+  grid-area: stage;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding-block: 0.5rem;
+}
+
+.hero-photo-slot {
+  position: relative;
+  z-index: 2;
+  width: clamp(220px, 24vw, 370px);
+  aspect-ratio: 433 / 577;
+  /* A round arch on top: 50% of the width across, and the same distance down (37.5% of the height). */
+  border-radius: 50% 50% 28px 28px / 37.5% 37.5% 28px 28px;
+}
+
+.hero-aura {
+  position: absolute;
+  width: 150%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--aura-a), var(--aura-b) 55%, transparent 74%);
+  pointer-events: none;
+}
+
+.orbit {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  border-radius: 50%;
+  border: 1px solid var(--orbit);
+  translate: -50% -50%;
+  pointer-events: none;
+}
+
+.orbit-a {
+  width: 178%;
+  aspect-ratio: 2.4;
+  rotate: -14deg;
+}
+
+.orbit-b {
+  width: 142%;
+  aspect-ratio: 3;
+  rotate: 16deg;
+  border-style: dashed;
+  opacity: 0.55;
+}
+
+.orbit-satellite {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--mint);
+  offset-path: ellipse(50% 50% at 50% 50%);
+  offset-rotate: 0deg;
+  filter: drop-shadow(0 0 6px rgba(108, 242, 156, 0.8));
+  animation: orbit-travel 22s linear infinite;
+}
+
+@keyframes orbit-travel {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* ---------- floating windows ---------- */
+
+.hero-panels {
+  grid-area: panels;
+  position: relative;
+  z-index: 2;
+  justify-self: end;
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 290px);
+}
+
+.hero-window {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+.hero-window + .hero-window {
+  margin-left: -2.5rem;
+  animation-delay: -3.5s;
+}
+
+@keyframes float-y {
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+.morph-body {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px 16px;
+}
+
+.morph-files {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.morph-files span {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--surface-strong);
+}
+
+.morph-meter {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  box-shadow: inset 0 0 0 1px var(--line);
+  overflow: hidden;
+}
+
+.morph-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--electric), var(--mint));
+}
+
+.morph-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text-soft);
+  font-size: 0.8125rem;
+}
+
+.morph-percent {
+  color: var(--text);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- scroll cue ---------- */
+
+.hero-cue-wrap {
+  grid-area: cue;
+  justify-self: center;
+  margin-top: clamp(0.75rem, 2.5vh, 1.75rem);
+}
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 4px 14px 4px 6px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.scroll-cue:hover {
+  color: var(--text);
+}
+
+.scroll-cue-track {
+  position: relative;
+  width: 22px;
+  height: 34px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--line-strong);
+}
+
+.scroll-cue-dot {
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 4px;
+  background: var(--mint-ink);
+  animation: cue-drop 1.9s var(--ease-in-out) infinite;
+}
+
+@keyframes cue-drop {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- background ---------- */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-aurora {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(38% 34% at 28% 32%, var(--aurora-a), transparent 72%),
+    radial-gradient(34% 30% at 74% 60%, var(--aurora-b), transparent 72%),
+    radial-gradient(30% 28% at 56% 14%, var(--aurora-c), transparent 72%);
+  animation: aurora 26s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes aurora {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-1%, 3%, 0) scale(1.02);
+  }
+}
+
+.hero-floor {
+  position: absolute;
+  left: -40%;
+  right: -40%;
+  bottom: -8%;
+  height: 46%;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  transform: perspective(520px) rotateX(64deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 78%);
+  mask-image: linear-gradient(to top, #000 0%, transparent 78%);
+}
+
+.hero-dust {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(1.2px 1.2px at 18px 26px, var(--star) 60%, transparent 70%),
+    radial-gradient(1px 1px at 92px 64px, var(--star) 60%, transparent 70%),
+    radial-gradient(1.4px 1.4px at 150px 12px, var(--star) 60%, transparent 70%),
+    radial-gradient(1px 1px at 46px 132px, var(--star) 60%, transparent 70%),
+    radial-gradient(1.2px 1.2px at 128px 118px, var(--star) 60%, transparent 70%),
+    radial-gradient(1px 1px at 176px 170px, var(--star) 60%, transparent 70%);
+  background-size: 190px 190px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 85%);
+}
+
+.hero-star {
+  position: absolute;
+  color: var(--star);
+  filter: drop-shadow(0 0 6px var(--star-glow));
+  animation: twinkle 4.8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    scale: 0.6;
+  }
+  50% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.hero-spot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--spot), transparent);
+}
+
+.hero-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg, var(--scanline) 0 1px, transparent 1px 4px);
+}
+
+/* Loops rest while the hero is off screen. */
+.hero[data-paused] .hero-aurora,
+.hero[data-paused] .hero-star,
+.hero[data-paused] .hero-window,
+.hero[data-paused] .orbit-satellite,
+.hero[data-paused] .scroll-cue-dot {
+  animation-play-state: paused;
+}
+
+/* ---------- the portrait (still version and the travelling layer share these) ---------- */
+
+.portrait {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: var(--portrait-shadow);
+}
+
+.portrait-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--portrait-bg);
+}
+
+.portrait-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.13) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 40%, #000, transparent);
+  mask-image: radial-gradient(80% 70% at 50% 40%, #000, transparent);
+}
+
+.portrait-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 16%;
+}
+
+.portrait-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Glossy reflection across the glass. */
+.portrait-scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 30%);
+}
+
+/* A chrome rim drawn as a gradient border. */
+.portrait-bezel {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 3px;
+  background: var(--chrome-ring);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+.flyer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 45;
+  pointer-events: none;
+  will-change: transform;
+}
+
+:root[data-menu-open] .flyer {
+  visibility: hidden;
+}
+
+.flyer-outline {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px rgba(205, 220, 245, 0.32), 0 8px 22px rgba(2, 6, 16, 0.35);
+}
+
+.flyer-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.flyer-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.badge-skin {
+  position: absolute;
+  inset: 0;
+  background: var(--badge-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.badge-skin::before {
+  content: '';
+  position: absolute;
+  inset: 3% 16% 52%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+}
+
+.flyer-sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(191, 227, 255, 0.55) 46%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(108, 242, 156, 0.55) 54%,
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+}
+
+.flyer-load-scan {
+  position: absolute;
+  inset: 0;
+}
+
+.flyer-load-scan::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: #fff;
+  box-shadow: 0 0 18px 4px rgba(108, 242, 156, 0.7);
+}
+
+.flyer-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--mint), 0 0 26px rgba(108, 242, 156, 0.6);
+}
+
+/* ---------- smaller screens ---------- */
+
+@media (max-width: 1023px) {
+  .hero-inner {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas:
+      'stage copy'
+      'name name'
+      'cue cue';
+  }
+
+  .hero-panels {
+    display: none;
+  }
+
+  .hero-photo-slot {
+    width: clamp(220px, 34vw, 320px);
+  }
+}
+
+@media (max-width: 719px) {
+  /* Two lines on phones: "KHYRK" over "SHAN GULA" (about 7.4 em wide). */
+  .hero {
+    --name-size: min(calc((100vw - 2 * var(--gutter)) / 7.6), 4.5rem);
+  }
+
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      'stage'
+      'name'
+      'copy'
+      'cue';
+    row-gap: 1.5rem;
+    align-items: start;
+  }
+
+  .hero-photo-slot {
+    width: min(56vw, 250px);
+  }
+
+  .hero-name {
+    margin-top: calc(var(--name-size) * -0.1);
+  }
+
+  .hero-name-art {
+    flex-wrap: wrap;
+  }
+
+  .orbit-a {
+    width: 210%;
+  }
+
+  .orbit-b {
+    width: 170%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-aurora,
+  .hero-star,
+  .hero-window,
+  .orbit-satellite,
+  .scroll-cue-dot {
+    animation: none;
+  }
+
+  .hero-star {
+    opacity: 0.7;
+  }
+}

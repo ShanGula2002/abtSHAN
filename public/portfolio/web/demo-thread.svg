@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000"><defs></defs><rect width="1600" height="1000" fill="#eef0ea"/>
+  <rect width="1600" height="64" fill="#e1e4dc"/>
+  <circle cx="40" cy="32" r="9" fill="#ff6b6b"/><circle cx="68" cy="32" r="9" fill="#ffd166"/><circle cx="96" cy="32" r="9" fill="#6cf29c"/>
+  <rect x="460" y="16" width="680" height="32" rx="16" fill="rgba(0,0,0,.06)"/>
+  <text x="800" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="17" fill="#5a6578">demo-site.example</text>
+  <g transform="translate(0 64)">
+  <text x="90" y="72" font-family="'Arial Black','Arial Bold',Arial,Helvetica,sans-serif" font-weight="900" font-size="28" letter-spacing="6" fill="#111">THREAD STUDIO</text>
+  <text x="1010" y="70" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">New</text><text x="1140" y="70" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">Tops</text><text x="1270" y="70" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">Bottoms</text><text x="1400" y="70" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">Bag (2)</text>
+  <g transform="translate(90 130)"><text y="0" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#111">Filter</text>
+  <rect y="30" width="260" height="70" rx="14" fill="#fff"/><text x="22" y="73" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">Size</text><rect y="120" width="260" height="70" rx="14" fill="#fff"/><text x="22" y="163" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">Colour</text><rect y="210" width="260" height="70" rx="14" fill="#fff"/><text x="22" y="253" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">Fabric</text><rect y="300" width="260" height="70" rx="14" fill="#fff"/><text x="22" y="343" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="20" fill="#3c423c">Price</text></g>
+  <g transform="translate(400 110)"><rect width="350" height="320" rx="18" fill="#fff"/>
+    <path transform="translate(95 60)" fill="#1f2a24" d="M50 0l30 18c12 8 28 8 40 0L150 0l60 40-30 50-25-15V200H45V75L20 90-10 40z"/>
+    <text x="0" y="356" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#111">Boxy tee</text>
+    <text x="350" y="356" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#3c423c">24.00</text></g><g transform="translate(780 110)"><rect width="350" height="320" rx="18" fill="#fff"/>
+    <path transform="translate(95 60)" fill="#c9d2c4" d="M50 0l30 18c12 8 28 8 40 0L150 0l60 40-30 50-25-15V200H45V75L20 90-10 40z"/>
+    <text x="0" y="356" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#111">Linen shirt</text>
+    <text x="350" y="356" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#3c423c">48.00</text></g><g transform="translate(1160 110)"><rect width="350" height="320" rx="18" fill="#fff"/>
+    <path transform="translate(95 60)" fill="#6cf29c" d="M50 0l30 18c12 8 28 8 40 0L150 0l60 40-30 50-25-15V200H45V75L20 90-10 40z"/>
+    <text x="0" y="356" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#111">Mint hoodie</text>
+    <text x="350" y="356" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#3c423c">56.00</text></g><g transform="translate(400 530)"><rect width="350" height="320" rx="18" fill="#fff"/>
+    <path transform="translate(95 60)" fill="#e8e2d6" d="M50 0l30 18c12 8 28 8 40 0L150 0l60 40-30 50-25-15V200H45V75L20 90-10 40z"/>
+    <text x="0" y="356" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#111">Oat knit</text>
+    <text x="350" y="356" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#3c423c">52.00</text></g><g transform="translate(780 530)"><rect width="350" height="320" rx="18" fill="#fff"/>
+    <path transform="translate(95 60)" fill="#3d7bff" d="M50 0l30 18c12 8 28 8 40 0L150 0l60 40-30 50-25-15V200H45V75L20 90-10 40z"/>
+    <text x="0" y="356" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#111">Cobalt jacket</text>
+    <text x="350" y="356" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#3c423c">88.00</text></g><g transform="translate(1160 530)"><rect width="350" height="320" rx="18" fill="#fff"/>
+    <path transform="translate(95 60)" fill="#111" d="M50 0l30 18c12 8 28 8 40 0L150 0l60 40-30 50-25-15V200H45V75L20 90-10 40z"/>
+    <text x="0" y="356" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#111">Black cargo</text>
+    <text x="350" y="356" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" fill="#3c423c">64.00</text></g></g><g transform="translate(1450 920)"><rect width="120" height="40" rx="8" fill="none" stroke="#08703d" stroke-width="2.5"/>
+  <text x="60" y="27" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="18" letter-spacing="3" fill="#08703d">DEMO</text></g></svg>
